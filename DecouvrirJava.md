@@ -286,22 +286,28 @@ Nous allons étudier ici les propriétés de la classe String
 Exécuter le programme suivant:
 
 ```java
+
 public class ExerciceChaine {
 	public static void main(String[] args) {
 		String uneChaine = "Bonjour" ;
 		String autreChaine = "Bonjour" ;
 
 		ExerciceChaine ec = new ExerciceChaine();
+		System.out.println("-- Deux chaines identiques");
 		ec.testChaines(uneChaine, autreChaine);
 
+		System.out.println("-- Une nouvelle instance");
 		autreChaine = new String("Bonjour");
 		ec.testChaines(uneChaine, autreChaine);
 
+		System.out.println("-- Une concaténation simple");
 		autreChaine = "Bon" + "jour" ;
 		ec.testChaines(uneChaine, autreChaine);
 
+		System.out.println("-- Une concaténation avec des variables différentes");
 		autreChaine = "Bon" ;
 		String troisiemeChaine = "jour";
+		autreChaine = autreChaine + troisiemeChaine;
 		ec.testChaines(uneChaine, autreChaine);
 	}
 	public void testChaines(String a, String b){
@@ -313,6 +319,7 @@ public class ExerciceChaine {
 		}
 	}
 }
+
 ```
 
 Remplacez la méthode testChaines par la suivante:
