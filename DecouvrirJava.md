@@ -513,7 +513,7 @@ Que s'est-il passé ?
 
 Si on dessine le diagramme des classes participantes à ce programme, on devrait voir apparaître des cardinalités:
 
-![Diagramme de classe: Champs](images/champs.png)
+![Diagramme de classe: Champs](images/Champs.png)
 
 Le `0..*` signifie qu'un objet de type Champs peut se voir associé 0 ou N éléments de type Object
 
