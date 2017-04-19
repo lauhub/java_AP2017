@@ -58,7 +58,7 @@ Pour cela, nous allons dupliquer cette classe en renommant le fichier en l'appel
 Une fois cela fait, essayez de compiler et de lancer le programme. Que constatez-vous ?
 
 
-Vous allez modifier le `main` en remplaçant le `system.out.println` comme suit:
+Vous allez modifier le `main(String[])` en remplaçant le `system.out.println` comme suit:
 
 
 ```java
@@ -70,7 +70,7 @@ public static void main(String[] args) {
 
 Lancez le programme. Que constatez-vous ?
 
-Maintenant, vous allez modifier la classe en ajoutant une méthode nommée `toString` :
+Maintenant, vous allez modifier la classe en ajoutant une méthode nommée `toString()` :
 
 ```java
   public String toString(){
@@ -81,7 +81,7 @@ Maintenant, vous allez modifier la classe en ajoutant une méthode nommée `toSt
 Relancez le programme. Que constatez-vous ?
 
 
-À nouveau, vous allez modifier la classe en modifiant la  méthode `toString` :
+À nouveau, vous allez modifier la classe en modifiant la  méthode `toString()` :
 
 ```java
   public String toString(){
@@ -161,7 +161,7 @@ public class Personne {
 
 ```
 
-Ces méthodes sont des méthodes d'instance: elles sont liées à un exemplaire de la classe Personne. On peut les utiliser en ajoutant à la fin de la méthode `main` les lignes suivantes:
+Ces méthodes sont des méthodes d'instance: elles sont liées à un exemplaire de la classe Personne. On peut les utiliser en ajoutant à la fin de la méthode `main(String[])` les lignes suivantes:
 
 ```java
 System.out.println(utilisateur.getNomPrenom());
@@ -171,7 +171,7 @@ System.out.println(utilisateur.getPrenomNom());
 Que constatez-vous ?
 
 
-Nous allons maintenant modifier l'affichage obtenu avec la ligne suivante du `main`:
+Nous allons maintenant modifier l'affichage obtenu avec la ligne suivante du `main(String[])`:
 
 ```java
 System.out.println(utilisateur); // Dépend de la méthode toString()
@@ -205,7 +205,7 @@ La méthode `ecrire(String chaine)` de stylo produira l'écriture sur la sortie 
 
 La méthode `ecrire(String chaine)` de ses classes filles rajoutera `ECRIRE_EN_couleur{` au début de la chaîne avant de l'écrire puis y rajoutera `}` à la fin de la chaîne.
 
-Par exemple si on a dans la fonction `main`:
+Par exemple si on a dans la fonction `main(String[])`:
 
 ```java
 StyloRouge styloR = new StyloRouge();
@@ -250,7 +250,7 @@ public class Poete {
 
 ```
 
-La classe `Main` ressemble à ceci:
+La classe `main(String[])` ressemble à ceci:
 
 ```java
 public class Main {
@@ -266,13 +266,13 @@ public class Main {
 }
 ```
 
-Modifiez ce code en supprimant la ligne suivante du `main`:
+Modifiez ce code en supprimant la ligne suivante du `main(String[])`:
 
 `poete.setStylo(new StyloRouge());`
 
 Que constate-t-on ?
 
-Cette erreur vient du fait que la variable monStylo n'est plus initialisée. Comment lui donner une valeur par défaut, de sorte que même si on n'appelle pas la méthode `setStylo` le programme ne plante pas ?
+Cette erreur vient du fait que la variable monStylo n'est plus initialisée. Comment lui donner une valeur par défaut, de sorte que même si on n'appelle pas la méthode `setStylo(Stylo)` le programme ne plante pas ?
 
 
 ## Manipulation de chaînes de caractères
@@ -322,7 +322,7 @@ public class ExerciceChaine {
 
 ```
 
-Remplacez la méthode testChaines par la suivante:
+Remplacez la méthode `testChaines(String, String)` par la suivante:
 
 ```java
 public void testChaines(String a, String b){
@@ -336,7 +336,7 @@ public void testChaines(String a, String b){
 ```
 Que constatez-vous ?
 
-Allez voir dans la Javadoc à quoi correspond la méthode `equals`.
+Allez voir dans la Javadoc à quoi correspond la méthode `equals(Object)`.
 
 Pourquoi est-elle utile ?
 
@@ -362,11 +362,11 @@ public static void main(String[] args) {
 ```
 Aidez-vous de la Javadoc pour comprendre ce que font chacune de ces méthodes.
 
-En utilisant la chaîne "  Je suis une chaîne moi aussi   ", testez les effets des méthodes suivantes:
+En utilisant la chaîne "  Je suis une chaîne moi aussi   " (attention aux espaces en début et fin de chaîne), testez les effets des méthodes suivantes:
 
-* lastIndexOf
-* trim
-* toString
+* `lastIndexOf(String)`
+* `trim()`
+* `toString()`
 
 Que constatez-vous ? Est-ce logique ?
 
@@ -436,7 +436,7 @@ Cette classe se fera sur le modèle suivant:
 
 Implémentez cette classe de sorte que `toString()` renvoie une valeur ressemblant à `nomDeLaFleur(3)` (avec `nom = "nomDeLaFleur"` et `identifiant = 3`
 
-Essayez d'instancier cette classe à partir de la méthode `main` de `LaClasse` et d'afficher cette instance avec un `System.out.println`.
+Essayez d'instancier cette classe à partir de la méthode `main(String[])` de `LaClasse` et d'afficher cette instance avec un `System.out.println(String)`.
 
 Que constatez-vous ?
 
@@ -456,7 +456,7 @@ public Fleur(String nom, int identifiant){
 }
 ```
 
-Essayez d'utiliser ce constructeur et d'afficher l'instance depuis la méthode `main`
+Essayez d'utiliser ce constructeur et d'afficher l'instance depuis la méthode `main(String[])`
 
 Créez ainsi plusieurs instances de fleur et affichez-les.
 
@@ -492,7 +492,7 @@ Dessinez le diagramme de classe représentant cette cette classe.
 
 ### Utilisation
 
-Dans votre `main`, rajoutez les lignes suivantes:
+Dans votre `main(String[])`, rajoutez les lignes suivantes:
 
 ```java
 Champs monChamp = new Champs();
@@ -561,14 +561,14 @@ public class FabriqueFleur {
 ```
 '
 
-Et l'utiliser dans notre `main` de la manière suivante:
+Et l'utiliser dans notre `main(String[])` de la manière suivante:
 
 ```java
 FabriqueFleur fabPaquerette = new FabriqueFleur("Paquerette");
 Fleur f = fabPaquerette.creerFleur();
 ```
 
-Créez plusieurs fleurs et testez votre code.
+Créez plusieurs instances de `Fleur` et testez votre code.
 
 
 ## Les règles sur le nommage des classes et des objets
