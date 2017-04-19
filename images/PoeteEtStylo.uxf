@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>190</x>
+      <y>120</y>
+      <w>200</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>Stylo
+--
+--
++ ecrire(String): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>380</x>
+      <y>150</y>
+      <w>80</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;60.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>440</x>
+      <y>110</y>
+      <w>390</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>Poete
+--
+- monNouveauPoeme: String
+--
++ ecrirePoeme(): void
++ ajouterVersAuPoeme(String): void
++ setStylo(Stylo): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

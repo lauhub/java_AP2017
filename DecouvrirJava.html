@@ -1,0 +1,341 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
+</head>
+<body>
+<h1 id="découvrir-java">Découvrir Java</h1>
+<h2 id="introduction">Introduction</h2>
+<p>Dans cette première partie, nous allons découvrir Java sous la forme de petits programmes. Nous n'allons pas tout de suite chercher à faire de programmes complexes, mais nous allons utiliser des mécanismes de la Programmation Orienté Objet et observer leurs effets</p>
+<p>L'idée va être de se familiariser avec différents concepts: classes, instances, interfaces, héritage et surtout modèles de conception.</p>
+<h2 id="environnement-de-développement">Environnement de développement</h2>
+<h3 id="installation-declipse">Installation d'Eclipse</h3>
+<p>Nous allons installer Eclipse comme environnement de développement de base.</p>
+<h2 id="premiers-programmes">Premiers programmes</h2>
+<h3 id="hello-world-avec-java">Hello World avec Java</h3>
+<p>Notre premier programme va être un Hello World. On le crée dans un fichier nommé HelloWorld.java et situé dans un répertoire fr/viacesi/pau/ap2017.</p>
+<pre class="sourceCode java"><code class="sourceCode java"><span class="co">/*</span>
+<span class="co"> * Entete</span>
+<span class="co"> */</span>
+
+<span class="kw">package fr.viacesi.pau.ap2017 ;</span>
+
+<span class="co">/**</span>
+<span class="co"> * Ceci est une classe</span>
+<span class="co"> */</span>
+<span class="kw">public</span> <span class="kw">class</span> HelloWorld {
+
+    <span class="co">/**</span>
+<span class="co">     * </span><span class="kw">@param args </span><span class="co">les arguments de la ligne de commande</span>
+<span class="co">     */</span>
+    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(String[] args) {
+        System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;Hello World!&quot;</span>); <span class="co">// Affiche</span>
+    }
+
+}</code></pre>
+<h3 id="les-chaînes-de-caractères">Les chaînes de caractères</h3>
+<p>Les chaînes de caractères en Java sont gérées par la classe String.</p>
+<p>Ouvrez la documentation JAVA 8 qui se trouve ici : <a href="https://docs.oracle.com/javase/8/docs/api/index.html?overview-summary.html" class="uri">https://docs.oracle.com/javase/8/docs/api/index.html?overview-summary.html</a></p>
+<p>Essayez de trouver la classe String dans cette documentation.</p>
+<p>Faites un diagramme UML représentant cette classe (avec au moins sa classe parente si elle en a une).</p>
+<h3 id="les-objets">Les objets</h3>
+<p>Toute classe Java hérite toujours de la classe Object. Cette classe contient deux méthodes intéressantes: <code>getClass()</code> et <code>toString()</code></p>
+<p>Nous allons partir de notre programme Hello World pour lui ajouter quelques fonctionnalités.</p>
+<p>Pour cela, nous allons dupliquer cette classe en renommant le fichier en l'appelant LaClasse (toujours dans le même répertoire)</p>
+<p>Une fois cela fait, essayez de compiler et de lancer le programme. Que constatez-vous ?</p>
+<p>Vous allez modifier le <code>main</code> en remplaçant le <code>system.out.println</code> comme suit:</p>
+<pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(String[] args) {
+    Object instance = <span class="kw">new</span> <span class="fu">LaClasse</span>();
+    System.<span class="fu">out</span>.<span class="fu">println</span>(instance); <span class="co">// Affiche</span>
+}</code></pre>
+<p>Lancez le programme. Que constatez-vous ?</p>
+<p>Maintenant, vous allez modifier la classe en ajoutant une méthode nommée <code>toString</code> :</p>
+<pre class="sourceCode java"><code class="sourceCode java">  <span class="kw">public</span> String <span class="fu">toString</span>(){
+    <span class="kw">return</span> <span class="st">&quot;Je suis LaClasse:&quot;</span>+<span class="kw">super</span>.<span class="fu">toString</span>();
+  }</code></pre>
+<p>Relancez le programme. Que constatez-vous ?</p>
+<p>À nouveau, vous allez modifier la classe en modifiant la méthode <code>toString</code> :</p>
+<pre class="sourceCode java"><code class="sourceCode java">  <span class="kw">public</span> String <span class="fu">toString</span>(){
+    <span class="kw">return</span> <span class="st">&quot;Je suis LaClasse (&quot;</span> + <span class="fu">getClass</span>() +<span class="st">&quot;  ):&quot;</span>+ <span class="kw">super</span>.<span class="fu">toString</span>();
+  }</code></pre>
+<p>Relancez le programme. Que constatez-vous ?</p>
+<h2 id="autre-exemple-dhéritage">Autre exemple d'héritage</h2>
+<p>Nous venons d'utiliser une des propriétés de l'héritage. En voici un autre exemple.</p>
+<h3 id="heritage">Heritage</h3>
+<p>Vous allez créer trois classes selon le diagramme de classe suivant:</p>
+<div class="figure">
+<img src="images/Stylo-diagramme_de_classe.png" alt="Diagramme de classe: Stylo" />
+<p class="caption">Diagramme de classe: Stylo</p>
+</div>
+<p>La méthode <code>ecrire(String chaine)</code> de stylo produira l'écriture sur la sortie standard.</p>
+<p>La méthode <code>ecrire(String chaine)</code> de ses classes filles rajoutera <code>ECRIRE_EN_couleur{</code> au début de la chaîne avant de l'écrire puis y rajoutera <code>}</code> à la fin de la chaîne.</p>
+<p>Par exemple si on a dans la fonction <code>main</code>:</p>
+<pre class="sourceCode java"><code class="sourceCode java">StyloRouge styloR = <span class="kw">new</span> <span class="fu">StyloRouge</span>();
+styloR.<span class="fu">ecrire</span>(<span class="st">&quot;Bonjour&quot;</span>);
+<span class="co">// affiche: &quot;ECRIRE_EN_ROUGE{Bonjour}&quot;</span></code></pre>
+<p>Petite difficulté supplémentaire: vous n'avez pas le droit d'utiliser de <code>System.out.println</code> dans les classes <code>StyloRouge</code> ni <code>StyloBleu</code></p>
+<h3 id="utilisation-par-un-autre-objet">Utilisation par un autre objet</h3>
+<p>Nous allons maintenant faire en sorte que notre stylo soit utilisé par un poète qui souhaite rédiger un poème. Il va simplement l'afficher à l'écran grâce au stylo.</p>
+<p>Voici un diagramme de classe représentant notre programme:</p>
+<div class="figure">
+<img src="images/PoeteEtStylo.png" alt="Diagramme de classe: Stylo" />
+<p class="caption">Diagramme de classe: Stylo</p>
+</div>
+<p>Et voici le programme correspondant:</p>
+<pre class="sourceCode java"><code class="sourceCode java">
+
+<span class="kw">public</span> <span class="kw">class</span> Poete {
+    <span class="kw">private</span> String monNouveauPoeme = <span class="st">&quot;&quot;</span>;
+    <span class="kw">private</span> Stylo stylo ;
+
+    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">ajouterVersAuPoeme</span>(String vers){
+        monNouveauPoeme = monNouveauPoeme + <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span> ;
+        monNouveauPoeme += vers;
+    }
+
+    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">setStylo</span>(Stylo stylo){
+        <span class="kw">this</span>.<span class="fu">stylo</span> = stylo;
+    }
+
+    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">ecrirePoeme</span>(){
+        stylo.<span class="fu">ecrire</span>(monNouveauPoeme);
+    }
+}</code></pre>
+<p>La classe <code>Main</code> ressemble à ceci:</p>
+<pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">class</span> Main {
+    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(String[] args) {
+        Poete poete = <span class="kw">new</span> <span class="fu">Poete</span>();
+        poete.<span class="fu">ajouterVersAuPoeme</span>(<span class="st">&quot;Maître Corbeau, sur un arbre perché&quot;</span>);
+        poete.<span class="fu">ajouterVersAuPoeme</span>(<span class="st">&quot;Tenait en son bec un fromage&quot;</span>);
+
+        poete.<span class="fu">setStylo</span>(<span class="kw">new</span> <span class="fu">StyloRouge</span>());
+
+        poete.<span class="fu">ecrirePoeme</span>();
+    }
+}</code></pre>
+<p>Modifiez ce code en supprimant la ligne suivante du <code>main</code>:</p>
+<p><code>poete.setStylo(new StyloRouge());</code></p>
+<p>Que constate-t-on ?</p>
+<p>Cette erreur vient du fait que la variable monStylo n'est plus initialisée. Comment lui donner une valeur par défaut, de sorte que même si on n'appelle pas la méthode <code>setStylo</code> le programme ne plante pas ?</p>
+<h2 id="manipulation-de-chaînes-de-caractères">Manipulation de chaînes de caractères</h2>
+<p>Dans la classe Poete, nous avons utilisé des chaînes de caractères avec l'opérateur &quot;+&quot;.</p>
+<p>Nous allons étudier ici les propriétés de la classe String</p>
+<h3 id="quelques-expériences-étonnantes">Quelques expériences étonnantes</h3>
+<p>Exécuter le programme suivant:</p>
+<pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">class</span> ExerciceChaine {
+    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(String[] args) {
+        String uneChaine = <span class="st">&quot;Bonjour&quot;</span> ;
+        String autreChaine = <span class="st">&quot;Bonjour&quot;</span> ;
+
+        ExerciceChaine ec = <span class="kw">new</span> <span class="fu">ExerciceChaine</span>();
+        ec.<span class="fu">testChaines</span>(uneChaine, autreChaine);
+
+        autreChaine = <span class="kw">new</span> String(<span class="st">&quot;Bonjour&quot;</span>);
+        ec.<span class="fu">testChaines</span>(uneChaine, autreChaine);
+
+        autreChaine = <span class="st">&quot;Bon&quot;</span> + <span class="st">&quot;jour&quot;</span> ;
+        ec.<span class="fu">testChaines</span>(uneChaine, autreChaine);
+
+        autreChaine = <span class="st">&quot;Bon&quot;</span> ;
+        String troisiemeChaine = <span class="st">&quot;jour&quot;</span>;
+        ec.<span class="fu">testChaines</span>(uneChaine, autreChaine);
+    }
+    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">testChaines</span>(String a, String b){
+        <span class="kw">if</span>(a == b){
+            System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;Les chaînes sont les mêmes&quot;</span>);
+        }
+        <span class="kw">else</span>{
+            System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;Les chaînes sont différentes&quot;</span>);
+        }
+    }
+}</code></pre>
+<p>Remplacez la méthode testChaines par la suivante:</p>
+<pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">void</span> <span class="fu">testChaines</span>(String a, String b){
+  <span class="kw">if</span>(a.<span class="fu">equals</span>(b)){
+    System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;Les chaînes sont les mêmes&quot;</span>);
+  }
+  <span class="kw">else</span>{
+    System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;Les chaînes sont différentes&quot;</span>);
+  }
+}</code></pre>
+<p>Que constatez-vous ?</p>
+<p>Allez voir dans la Javadoc à quoi correspond la méthode <code>equals</code>.</p>
+<p>Pourquoi est-elle utile ?</p>
+<h3 id="quelques-méthodes-pour-utiliser-les-string">Quelques méthodes pour utiliser les String</h3>
+<p>Exécutez le programme suivant:</p>
+<pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(String[] args) {
+  String chaine = <span class="st">&quot;Quelques caractères&quot;</span>;
+
+  System.<span class="fu">out</span>.<span class="fu">println</span>(chaine.<span class="fu">length</span>());
+  System.<span class="fu">out</span>.<span class="fu">println</span>(chaine.<span class="fu">substring</span>(<span class="dv">2</span>));
+  System.<span class="fu">out</span>.<span class="fu">println</span>(chaine.<span class="fu">substring</span>(<span class="dv">5</span>,<span class="dv">10</span>));
+  System.<span class="fu">out</span>.<span class="fu">println</span>(chaine.<span class="fu">startsWith</span>(<span class="st">&quot;Que&quot;</span>));
+  System.<span class="fu">out</span>.<span class="fu">println</span>(chaine.<span class="fu">startsWith</span>(<span class="st">&quot;que&quot;</span>));
+  System.<span class="fu">out</span>.<span class="fu">println</span>(chaine.<span class="fu">endsWith</span>(<span class="st">&quot;res&quot;</span>));
+  System.<span class="fu">out</span>.<span class="fu">println</span>(chaine.<span class="fu">endsWith</span>(<span class="st">&quot;re&quot;</span>));
+  System.<span class="fu">out</span>.<span class="fu">println</span>(chaine.<span class="fu">indexOf</span>(<span class="st">&quot;ra&quot;</span>));
+  System.<span class="fu">out</span>.<span class="fu">println</span>(chaine.<span class="fu">toLowerCase</span>());
+  System.<span class="fu">out</span>.<span class="fu">println</span>(chaine.<span class="fu">toUpperCase</span>());
+}</code></pre>
+<p>Aidez-vous de la Javadoc pour comprendre ce que font chacune de ces méthodes.</p>
+<p>En utilisant la chaîne &quot; Je suis une chaîne moi aussi &quot;, testez les effets des méthodes suivantes:</p>
+<ul>
+<li>lastIndexOf</li>
+<li>trim</li>
+<li>toString</li>
+</ul>
+<p>Que constatez-vous ? Est-ce logique ?</p>
+<h3 id="lecture-de-valeurs-depuis-la-console">Lecture de valeurs depuis la console</h3>
+<p>Le code suivant permet de récupérer des valeurs depuis les entrées clavier:</p>
+<pre class="sourceCode java"><code class="sourceCode java">Scanner in = <span class="kw">new</span> Scanner(System.<span class="fu">in</span>);
+
+String s = in.<span class="fu">next</span>();
+<span class="dt">int</span> i = in.<span class="fu">nextInt</span>();</code></pre>
+<p>Le code suivant permet de récupérer des valeurs mais ne marchera pas sous Eclipse (ou dans un IDE)</p>
+<pre class="sourceCode java"><code class="sourceCode java">String reponse = System.<span class="fu">console</span>().<span class="fu">readLine</span>();
+System.<span class="fu">out</span>.<span class="fu">println</span>(reponse);</code></pre>
+<h3 id="parcours-dune-chaîne-et-boucles">Parcours d'une chaîne et boucles</h3>
+<p>Nous allons utiliser une boucle simple pour récupérer chaque caractère d'une chaîne.</p>
+<pre class="sourceCode java"><code class="sourceCode java"><span class="kw">for</span> (<span class="dt">int</span> i = <span class="dv">0</span> ; i &lt; chaine.<span class="fu">length</span>(); i++) {
+  System.<span class="fu">out</span>.<span class="fu">println</span>(chaine.<span class="fu">charAt</span>(i));
+}</code></pre>
+<p>Analysez le code ci-dessus et posez des questions si vous ne le comprenez-pas.</p>
+<p>Ecrivez un programme qui détermine si une chaîne entrée au clavier est un palindrome (un mot qui se lit dans les deux sens).</p>
+<h2 id="modifier-le-comportement-dune-classe">Modifier le comportement d'une classe</h2>
+<p>Il est possible de changer le comportement d'une classe en se passant de l'héritage.</p>
+<p>Ce n'est en effet pas toujours la meilleure solution puisqu'il existe de nombreuses possibilités pour modifier le comportement d'une classe</p>
+<h3 id="exercice">Exercice</h3>
+<p>Réfléchissez à un moyen de vous passer des classes StyloRouge et StyloBleu tout en gardant les fonctionnalités qu'ils offrent.</p>
+<p>Vous allez utiliser pour cela des attributs et modifier le comportement de la méthode <code>ecrire(String)</code>.</p>
+<p>Dessinez le diagramme de classe correspondant.</p>
+<h2 id="créer-des-objets">Créer des objets</h2>
+<p>La création d'objet en Java se fait avec le mot clef <code>new</code>.</p>
+<p>L'opération effectuée avec <code>new</code> est appelée une instantiation: on crée une instance (c'est-à-dire un &quot;exemplaire&quot;) d'une classe.</p>
+<p>Cette instance est un exemplaire indépendant des autres objets de cette classe. Il se comporte cependant avec les mêmes règles.</p>
+<h3 id="création-dune-nouvelle-classe">Création d'une nouvelle classe</h3>
+<p>Vous allez implémenter une classe nommée <code>Fleur</code> dans le paquet <code>fr.viacesi.pau.ap2017.nature</code></p>
+<p>Cette classe se fera sur le modèle suivant:</p>
+<div class="figure">
+<img src="images/Fleur.png" alt="Diagramme de classe: Fleur" />
+<p class="caption">Diagramme de classe: Fleur</p>
+</div>
+<p>Implémentez cette classe de sorte que <code>toString()</code> renvoie une valeur ressemblant à <code>nomDeLaFleur(3)</code> (avec <code>nom = &quot;nomDeLaFleur&quot;</code> et <code>identifiant = 3</code></p>
+<p>Essayez d'instancier cette classe à partir de la méthode <code>main</code> de <code>LaClasse</code> et d'afficher cette instance avec un <code>System.out.println</code>.</p>
+<p>Que constatez-vous ?</p>
+<p>Est-on limité par quelque chose ici ?</p>
+<h4 id="constructeur">Constructeur</h4>
+<p>Pour pouvoir créer cette classe, il existe un constructeur par défaut. Sauf qu'il ne permet pas de modifier les valeurs des attributs.</p>
+<p>Créer un nouveau constructeur sur le modèle suivant:</p>
+<pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="fu">Fleur</span>(String nom, <span class="dt">int</span> identifiant){
+  <span class="kw">this</span>.<span class="fu">nom</span> = nom;
+  <span class="kw">this</span>.<span class="fu">identifiant</span> = identifiant;
+
+}</code></pre>
+<p>Essayez d'utiliser ce constructeur et d'afficher l'instance depuis la méthode <code>main</code></p>
+<p>Créez ainsi plusieurs instances de fleur et affichez-les.</p>
+<h3 id="création-dune-classe-champs">Création d'une classe Champs</h3>
+<p>La classe Champ sera codée de la manière suivante:</p>
+<pre class="sourceCode java"><code class="sourceCode java"><span class="kw">package fr.viacesi.pau.ap2017.nature;</span>
+<span class="kw">import java.util.List;</span>
+<span class="kw">import java.util.ArrayList;</span>
+
+<span class="kw">public</span> <span class="kw">class</span> Champs {
+    <span class="kw">private</span> List mesObjets = <span class="kw">new</span> ArrayList();
+
+    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">addObjet</span>(Object o){
+        mesObjets.<span class="fu">add</span>(o);
+    }
+
+    <span class="kw">public</span> String <span class="fu">toString</span>(){
+        String valeur = <span class="st">&quot;Champ [&quot;</span>;
+        <span class="kw">for</span> (Object o : mesObjets) {
+            valeur += o.<span class="fu">toString</span>();
+        }
+        <span class="kw">return</span> valeur +<span class="st">&quot;]&quot;</span> ;
+    }
+}</code></pre>
+<p>Dessinez le diagramme de classe représentant cette cette classe.</p>
+<h3 id="utilisation">Utilisation</h3>
+<p>Dans votre <code>main</code>, rajoutez les lignes suivantes:</p>
+<pre class="sourceCode java"><code class="sourceCode java">Champs monChamp = <span class="kw">new</span> <span class="fu">Champs</span>();
+
+monChamp.<span class="fu">add</span>(<span class="kw">new</span> <span class="fu">Fleur</span>(<span class="st">&quot;Paquerette&quot;</span>, <span class="dv">1</span>));
+monChamp.<span class="fu">add</span>(<span class="kw">new</span> <span class="fu">Fleur</span>(<span class="st">&quot;Paquerette&quot;</span>, <span class="dv">2</span>));
+
+monChamp.<span class="fu">add</span>(<span class="kw">new</span> <span class="fu">Fleur</span>(<span class="st">&quot;Violette&quot;</span>, <span class="dv">3</span>));
+monChamp.<span class="fu">add</span>(<span class="kw">new</span> <span class="fu">Fleur</span>(<span class="st">&quot;Bouton d&#39;or&quot;</span>, <span class="dv">4</span>));
+
+System.<span class="fu">out</span>.<span class="fu">println</span>(monChamp);</code></pre>
+<p>Que s'est-il passé ?</p>
+<p>Si on dessine le diagramme des classes participantes à ce programme, on devrait voir apparaître des cardinalités:</p>
+<div class="figure">
+<img src="images/champs.png" alt="Diagramme de classe: Champs" />
+<p class="caption">Diagramme de classe: Champs</p>
+</div>
+<p>Le <code>0..*</code> signifie qu'un objet de type Champs peut se voir associé 0 ou N éléments de type Object</p>
+<p>On peut associer les cardinalités suivantes:</p>
+<ul>
+<li>0</li>
+<li>0..*</li>
+<li>1</li>
+<li>1..*</li>
+<li><ul>
+<li></li>
+</ul></li>
+</ul>
+<p>D'après vous que signifient-elles ?</p>
+<p>Quelle différence pouvez-vous noter par rapport à Merise ?</p>
+<h4 id="fabrique">Fabrique</h4>
+<p>Précédemment, nous avons utilisé le mot clé <code>new</code> pour créer des objets <code>Fleur</code>. Cependant, il est possible de masquer l'utilisation de <code>new</code> en &quot;délégant&quot; la responsabilité de la création à une autre classe.</p>
+<p>Pour cela, vous allez modifier la classe <code>Fleur</code> et remplacer <code>protected</code> par <code>public</code> au niveau de son constructeur.</p>
+<pre class="sourceCode java"><code class="sourceCode java"><span class="kw">protected</span> <span class="fu">Fleur</span>(String nom, <span class="dt">int</span> identifiant){</code></pre>
+<p>Le code que nous avions écrit précédemment ne fonctionne plus. Nous allons maintenant créer la classe suivante:</p>
+<pre class="sourceCode java"><code class="sourceCode java"><span class="kw">package fr.viacesi.pau.ap2017.nature;</span>
+
+<span class="kw">public</span> <span class="kw">class</span> FabriqueFleur {
+    <span class="kw">private</span> <span class="dt">int</span> identifiant = <span class="dv">0</span>;
+    <span class="kw">private</span> String nom ;
+
+    <span class="kw">public</span> <span class="fu">FabriqueFleur</span>(String nom){
+        <span class="kw">this</span>.<span class="fu">nom</span> = nom;
+    }
+
+    <span class="kw">public</span> Fleur <span class="fu">creerFleur</span>(){
+        <span class="kw">return</span> <span class="kw">new</span> <span class="fu">Fleur</span>(nom, identifiant++);
+    }
+}</code></pre>
+<p>'</p>
+<p>Et l'utiliser dans notre <code>main</code> de la manière suivante:</p>
+<pre class="sourceCode java"><code class="sourceCode java">FabriqueFleur fabPaquerette = <span class="kw">new</span> <span class="fu">FabriqueFleur</span>(<span class="st">&quot;Paquerette&quot;</span>);
+Fleur f = fabPaquerette.<span class="fu">creerFleur</span>();</code></pre>
+<p>Créez plusieurs fleurs et testez votre code.</p>
+<h2 id="les-règles-sur-le-nommage-des-classes-et-des-objets">Les règles sur le nommage des classes et des objets</h2>
+<p>Nous allons maintenant plonger un peu plus avant dans le langage Java.</p>
+<p>Pour cela, nous allons étudier la manière d'écrire correctement dans ce langage à partir d'une convention de codage.</p>
+<p>Qu'est-ce qu'une convention de codage ?</p>
+<p><a href="https://en.wikibooks.org/wiki/Java_Programming/Coding_conventions">https://en.wikibooks.org/wiki/Java_Programming/Coding_convention</a></p>
+</body>
+</html>
