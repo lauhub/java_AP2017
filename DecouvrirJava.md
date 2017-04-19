@@ -519,11 +519,11 @@ Le `0..*` signifie qu'un objet de type Champs peut se voir associé 0 ou N élé
 
 On peut associer les cardinalités suivantes:
 
-* 0
-* 0..*
-* 1
-* 1..*
-* *
+* `0`
+* `0..*`
+* `1`
+* `1..*`
+* `*`
 
 D'après vous que signifient-elles ?
 
