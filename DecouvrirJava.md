@@ -228,8 +228,6 @@ Voici un diagramme de classe représentant notre programme:
 Et voici le programme correspondant:
 
 ```java
-
-
 public class Poete {
 	private String monNouveauPoeme = "";
 	private Stylo stylo ;
@@ -247,7 +245,6 @@ public class Poete {
 		stylo.ecrire(monNouveauPoeme);
 	}
 }
-
 ```
 
 La classe `main(String[])` ressemble à ceci:
@@ -428,6 +425,7 @@ for (int i = 0 ; i < chaine.length(); i++) {
   System.out.println(chaine.charAt(i));
 }
 ```
+
 Analysez le code ci-dessus et posez des questions si vous ne le comprenez-pas.
 
 Ecrivez un programme qui détermine si une chaîne entrée au clavier est un palindrome (un mot qui se lit dans les deux sens).
@@ -518,8 +516,6 @@ public class Champs {
 
 Dessinez le diagramme de classe représentant cette cette classe.
 
-
-
 ### Utilisation
 
 Dans votre `main(String[])`, rajoutez les lignes suivantes:
@@ -567,7 +563,7 @@ Précédemment, nous avons utilisé le mot clé `new` pour créer des objets `Fl
 Pour cela, vous allez modifier la classe `Fleur` et remplacer `protected` par `public` au niveau de son constructeur.
 
 ```java
-protected Fleur(String nom, int identifiant){
+protected Fleur(String nom, int identifiant){...}
 ```
 
 Le code que nous avions écrit précédemment ne fonctionne plus. Nous allons maintenant créer la classe suivante:
@@ -589,7 +585,7 @@ public class FabriqueFleur {
 	}
 }
 ```
-'
+
 
 Et l'utiliser dans notre `main(String[])` de la manière suivante:
 
@@ -601,13 +597,7 @@ Fleur f = fabPaquerette.creerFleur();
 Créez plusieurs instances de `Fleur` et testez votre code.
 
 
-## Les règles sur le nommage des classes et des objets
 
-Nous allons maintenant plonger un peu plus avant dans le langage Java.
+##### Pour conclure sur la fabrique
 
-Pour cela, nous allons étudier la manière d'écrire correctement dans ce langage à partir d'une convention de codage.
-
-
-Qu'est-ce qu'une convention de codage ?
-
-[https://en.wikibooks.org/wiki/Java_Programming/Coding_convention](https://en.wikibooks.org/wiki/Java_Programming/Coding_conventions)
+Nous venons de voir que nous pouvions encapsuler la création d'objets à l'intérieur d'autres objets. Ce principe sera réutilisé et amélioré lorsque nous étudierons les Design Patterns.
