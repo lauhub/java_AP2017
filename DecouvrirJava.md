@@ -91,6 +91,105 @@ Relancez le programme. Que constatez-vous ?
 
 Relancez le programme. Que constatez-vous ?
 
+## Représentation d'une Personne
+
+Nous allons définir une classe personne comme suit:
+```java
+public class Personne {
+	String nom;
+	String prenom;
+	String dateNaissance;
+	String adresseMail;
+	String telephone;
+
+	public static void main(String[] args) {
+		Personne utilisateur = new Personne();
+
+		utilisateur.nom           = "McEnroe";
+		utilisateur.prenom        = "John";
+		utilisateur.dateNaissance = "10/10/1960";
+		utilisateur.adresseMail   = "johnmcenroe@usa.tennis.com";
+		utilisateur.telephone     = "+001 203 204 205";
+
+		System.out.println(utilisateur.nom);
+		System.out.println(utilisateur.prenom);
+		System.out.println(utilisateur);
+	}
+}
+
+```
+Exécutez ce programme. Que constatez-vous ?
+
+Les attributs de cette classe sont:
+* nom          
+* prenom       
+* dateNaissance
+* adresseMail  
+* telephone    
+
+Aux attributs de cette classe, on va pouvoir rajouter des méthodes:
+
+```java
+public class Personne {
+	String nom;
+	String prenom;
+	String dateNaissance;
+	String adresseMail;
+	String telephone;
+
+	public static void main(String[] args) {
+		Personne utilisateur = new Personne();
+
+		utilisateur.nom           = "McEnroe";
+		utilisateur.prenom        = "John";
+		utilisateur.dateNaissance = "10/10/1960";
+		utilisateur.adresseMail   = "johnmcenroe@usa.tennis.com";
+		utilisateur.telephone     = "+001 203 204 205";
+
+		System.out.println(utilisateur.nom);
+		System.out.println(utilisateur.prenom);
+		System.out.println(utilisateur);
+	}
+  public String getNomPrenom(){
+    return nom+" "+prenom;
+  }
+
+  public String getPrenomNom(){
+    return prenom+" "+nom;
+  }
+}
+
+```
+
+Ces méthodes sont des méthodes d'instance: elles sont liées à un exemplaire de la classe Personne. On peut les utiliser en ajoutant à la fin de la méthode `main` les lignes suivantes:
+
+```java
+System.out.println(utilisateur.getNomPrenom());
+System.out.println(utilisateur.getPrenomNom());
+
+```
+Que constatez-vous ?
+
+
+Nous allons maintenant modifier l'affichage obtenu avec la ligne suivante du `main`:
+
+```java
+System.out.println(utilisateur); // Dépend de la méthode toString()
+
+```
+
+Pour cela, nous surchargeons la méthode toString qui était déjà définie dans la classe Object:
+
+```java
+public String toString(){
+  return nom+" "+prenom+" "+dateNaissance+" "
+      +adresseMail+" "+telephone;
+}
+
+```
+
+Que constatez-vous ?
+
 
 
 ## Autre exemple d'héritage
