@@ -382,7 +382,37 @@ String s = in.next();
 int i = in.nextInt();
 ```
 
-Le code suivant permet de récupérer des valeurs mais ne marchera pas sous Eclipse (ou dans un IDE)
+Le programme suivant fait une démonstration de cela:
+
+```java
+
+import java.util.Scanner;
+
+public class LectureValeur {
+	private Scanner scanner = new Scanner(System.in);
+
+	public static void main(String[] args) {
+		LectureValeur lectureValeur = new LectureValeur();
+
+		String valeur = lectureValeur.demanderChaine("Veuillez entrer une chaîne:");
+		System.out.println("La valeur entrée est: "+valeur);
+	}
+
+	public String demanderChaine(String message){
+		System.out.println(message);
+		return scanner.next();
+	}
+}
+
+```
+
+
+
+
+
+#### Information à propos de la méthode System.console()
+
+Le code suivant permet de récupérer des valeurs mais ne marchera pas sous Eclipse (ou dans un IDE):
 ```java
 String reponse = System.console().readLine();
 System.out.println(reponse);
