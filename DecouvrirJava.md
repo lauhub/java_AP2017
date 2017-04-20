@@ -324,10 +324,10 @@ Remplacez la méthode `testChaines(String, String)` par la suivante:
 ```java
 public void testChaines(String a, String b){
   if(a.equals(b)){
-    System.out.println("Les chaînes sont les mêmes");
+    System.out.println("Les chaînes '"+ a + "' et '"+b+ "' sont les mêmes");
   }
   else{
-    System.out.println("Les chaînes sont différentes");
+    System.out.println("Les chaînes '"+ a + "' et '"+b+ "' sont différentes");
   }
 }
 ```
