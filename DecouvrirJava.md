@@ -309,10 +309,10 @@ public class ExerciceChaine {
 	}
 	public void testChaines(String a, String b){
 		if(a == b){
-			System.out.println("Les chaînes sont les mêmes");
+			System.out.println("Les chaînes '"+ a + "' et '"+b+ "' sont les mêmes");
 		}
 		else{
-			System.out.println("Les chaînes sont différentes");
+			System.out.println("Les chaînes '"+ a + "' et '"+b+ "' sont différentes");
 		}
 	}
 }
