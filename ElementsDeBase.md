@@ -367,7 +367,62 @@ Implémentez toutes les formes demandées.
 Pour chacune de ces formes, faites en sorte que votre programme puisse gérer les demandes de l'utilisateur données précédemment.
 
 
-### Tableaux
+### Gestion d'une liste d'entiers triés
+
+
+Nous allons définir une classe `TableauEntierTrie` permettant de stocker des entiers dans un tableau d'entier.
+
+Pour cela nous allons définir les méthodes suivantes:
+* `void inserer(int valeur)` : insère un entier dans le tableau en respectant l'ordre croissant.
+* `void supprimer(int valeur)` : supprime toutes les occurrences de l'entier donnée en paramètre du tableau
+* `public String toString()` : récupère une représentation sous forme de chaîne de caractères du tableau
+
+Si le tableau devient trop petit, vous devrez en définir un nouveau plus grand et recopier son contenu.
+
+La classe `EssaiTableauEntierTrie` comportera une méthode `main(String[] args)` et permettra de tester votre classe.
+
+### Gestion d'une liste d'objets
+
+Nous allons cette fois gérer une liste de `Forme`.
+
+La classe à créer est `ListeForme`. Elle comportera comme attributs:
+* un tableau de `Forme`
+* une valeur entière `longueur` représentant le nombre d'instances actuellement stockées dans la liste.
+
+Elle comportera les méthodes suivantes:
+
+* `void ajouter(Forme forme)` : ajoute une instance de `Forme` à la suite du tableau. Si l'instance est déjà dans le tableau, elle est tout de même ajoutée.
+* `int getLongueur()` : récupère la longueur du tableau
+* `Forme getForme(int index)`: récupère l'instance de `Forme` positionné à `index` dans le tableau.
+* `void supprimerA(int index)` :  supprime l'instance de `Forme` positionné à `index` dans le tableau en décalant toutes les autres instances d'un cran (c'est à dire que la forme positionnée à l'index `i+1` sera recopiée et à l'index `i` et ainsi de suite jusqu'à la fin du tableau). Une fois cela fait, `longueur` est mis à jour.
+
+Implémentez cette classe et testez-là avec la classe nommée `EssaiListeForme`.
+
+Dessinez le diagramme de classe correspondant.
+
+### Utilisation de la liste de Forme
+
+Ecrire une classe `GestionForme` (comportant une méthode `main`) qui demande de saisir une liste de forme à l'utilisateur et d'afficher toutes les caractéristiques des formes.
+
+Par exemple on aura ce type de fonctionnement:
+
+```
+Que voulez-faire ?
+    1: créer une nouvelle forme
+    2: supprimer une forme
+    3: afficher les valeurs de périmètres pour toutes les formes
+    4: afficher les valeurs des aires pour toutes les formes
+    5: quitter le programme
+```
+
+L'affichage d'une forme se fera de cette manière:
+
+```
+triangle/bermudes : l'aire vaut 500
+```
+
+
+### Carnet d'adresses
 
 Nous allons créer un programme qui permet de gérer un carnet d'adresses.
 
