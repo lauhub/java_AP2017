@@ -268,7 +268,7 @@ On utilise pour cela ces trois mots clés:
 
 * `private`
 * `protected`
-* `private`
+* `public`
 
 
 | Modificateur |Applicable à  | Signification|
