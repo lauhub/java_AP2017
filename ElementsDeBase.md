@@ -322,7 +322,7 @@ public class Trousse { //La classe est visible partout
 Dans le fichier `SacDeVoyage.java` :
 
 ```java
-package fr.viacesi.pau.ap2017.voyage; //Meme paquet que valise
+package fr.viacesi.pau.ap2017.voyage; //Meme paquet que Trousse
 
 class SacDeVoyage {
 	Trousse trousse = new Trousse();
@@ -364,7 +364,7 @@ Nous allons créer la classe suivante dans le paquet `fr.viacesi.pau.ap2017.tran
 ```java
 
 package fr.viacesi.pau.ap2017.transport; //Un autre paquet
-
+import fr.viacesi.pau.ap2017.voyage.Trousse; //import de Trousse
 class Voiture {
 	Trousse trousse = new Trousse();
 	int entier;
