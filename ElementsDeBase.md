@@ -120,7 +120,7 @@ formeA.compteur = 1;
 Forme formeB = new Forme();
 formeB.compteur += 1;
 System.out.println(formeA.compteur); //2
-System.out.println(formB.compteur); //2
+System.out.println(formeB.compteur); //2
 ```
 
 
@@ -141,7 +141,7 @@ class Forme{
     compteurFormes++;
   }
 
-  static getNombreDInstances(){
+  static int getNombreDInstances(){
     return compteurFormes;
   }
 }
