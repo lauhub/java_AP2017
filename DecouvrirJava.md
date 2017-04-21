@@ -505,16 +505,15 @@ public class Champs {
 	}
 
 	public String toString(){
-		String valeur = "Champ [";
+		String valeur = "Champs[";
 		for (Object o : mesObjets) {
-			valeur += o.toString();
+			valeur += o.toString() + ", ";
 		}
 		return valeur +"]" ;
 	}
 }
 ```
 
-Dessinez le diagramme de classe représentant cette cette classe.
 
 ### Utilisation
 
@@ -532,10 +531,14 @@ monChamp.add(new Fleur("Bouton d'or", 4));
 System.out.println(monChamp);
 
 ```
+Dessinez le diagramme de classe représentant la classe Champs.
 
 
 Que s'est-il passé ?
 
+
+
+#### Un peu d'UML
 
 Si on dessine le diagramme des classes participantes à ce programme, on devrait voir apparaître des cardinalités:
 
