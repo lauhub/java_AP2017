@@ -198,6 +198,7 @@ class Polygone{
 }
 class Triangle extends Polygone{
   String getNom(){ // ERREUR de COMPILATION
+      return "Triangle."+nom;
   }
 }
 ```
