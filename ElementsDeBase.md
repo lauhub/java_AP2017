@@ -382,6 +382,26 @@ class Voiture {
 
 ```
 
+Puis la classe `TroussePremierSecours`:
+
+
+```java
+package fr.viacesi.pau.ap2017.transport;
+import fr.viacesi.pau.ap2017.voyage.Trousse;
+public class TroussePremierSecours extends Trousse {
+	TroussePremierSecours(){
+		String chaine = publique;
+		int entier = protege;
+		entier = getProtege();
+		entier = defaut;
+		entier = prive ;
+		entier = getPrive();
+	}
+}
+
+```
+
+
 Corrigez toutes les erreurs en ajoutant des accesseurs ou en commentant les lignes contenant une erreur impossible à corriger.
 
 
