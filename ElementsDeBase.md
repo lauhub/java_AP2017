@@ -314,13 +314,13 @@ public abstract class Forme {
 
     /** Renvoie la surface de la forme courante */    
     public abstract double getSurface();
-    
+
     /** Renvoie le périmètre de la forme courante */
     public abstract double getPerimetre();
 
     /** Fonction qui pose des questions à l'utilisateur pour
     saisir les valeurs nécessaires aux calculs*/
-    public void saisirValeurs();
+    public abstract void saisirValeurs();
 
     public String getType(){...}
     public String getNom(){...}
