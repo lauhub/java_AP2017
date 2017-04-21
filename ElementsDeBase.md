@@ -196,7 +196,7 @@ class Polygone{
     JE_NE_PEUX_PAS_CHANGER = 1 ; //ERREUR
   }
 }
-class Triangle{
+class Triangle extends Polygone{
   String getNom(){ // ERREUR de COMPILATION
   }
 }
