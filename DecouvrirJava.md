@@ -522,11 +522,11 @@ Dans votre `main(String[])`, rajoutez les lignes suivantes:
 ```java
 Champs monChamp = new Champs();
 
-monChamp.add(new Fleur("Paquerette", 1));
-monChamp.add(new Fleur("Paquerette", 2));
+monChamp.addObjet(new Fleur("Paquerette", 1));
+monChamp.addObjet(new Fleur("Paquerette", 2));
 
-monChamp.add(new Fleur("Violette", 3));
-monChamp.add(new Fleur("Bouton d'or", 4));
+monChamp.addObjet(new Fleur("Violette", 3));
+monChamp.addObjet(new Fleur("Bouton d'or", 4));
 
 System.out.println(monChamp);
 
