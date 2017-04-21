@@ -256,6 +256,133 @@ Pour les constantes on utilise une règle différente: majuscules avec des mots 
 final String MA_CONSTANTE = "Je ne changerai jamais !"
 ```
 
+## Contrôle des accès
+
+Les classes, attributs ou méthodes peuvent être accessibles
+(on dit aussi visibles) ou non à l'intérieur d'autres classes, qu'elles soient du même package ou pas.
+
+Pour indiquer les degrés d'accessibilités on utilise des modificateurs d'accessibilité (*access modifiers*).
+
+On utilise pour cela ces trois mots clés:
+
+* private
+* protected
+* private
+
+
+| Modificateur |Applicable à  | Signification|
+|--------------|--------------|--------------|
+|    `public`        | classe                      | est visible partout |
+|    `public`        | membre (méthode ou attribut)| visible partout où sa classe est visible |
+| *par défaut (sans modificateur)*            | classe ou membre              | seulement à l'intérieur de son package |
+| `protected`  | méthode ou attribut |  à l'intérieur du package ou par les classes dérivées |
+| `private`    | méthode ou attribut  |  uniquement à l'intérieur de la classe  ||
+
+
+### Application
+
+Nous allons créer les classes suivantes dans le paquet `fr.viacesi.pau.ap2017.voyage`.
+
+Commentez en indiquant pour chaque ligne:
+
+* Si le membre est accessible
+* Si une erreur de compilation se produit
+
+Vous pouvez évidemment expérimenter dans votre IDE.
+
+Dans le fichier `Trousse.java`
+
+```java
+package fr.viacesi.pau.ap2017.voyage;
+
+public class Trousse { //La classe est visible partout
+	public String publique ; //Est visible partout où sa classe est visible
+	protected int protege ;
+
+	int defaut;
+	private int prive;
+	Trousse(String valPub, int valProt, int valDef, int valPriv){
+		publique = valPub;
+		valProt = protege;
+		defaut = valDef;
+		prive = valPriv;
+	}
+	Trousse(){}
+
+	public int getProtege(){ // Accesseur public
+		return protege;
+	}
+	public int getPrive(){ // Accesseur public
+		return prive;
+	}
+}
+```
+
+Dans le fichier `SacDeVoyage.java` :
+
+```java
+package fr.viacesi.pau.ap2017.voyage; //Meme paquet que valise
+
+class SacDeVoyage {
+	Trousse trousse = new Trousse();
+	int entier;
+	String chaine;
+
+	SacDeVoyage(){
+		chaine = trousse.publique;
+		entier = trousse.protege;
+		entier = trousse.getProtege();
+		entier = trousse.defaut;
+		entier = trousse.prive ;
+		entier = trousse.getPrive();
+	}
+}
+```
+
+Dans le fichier `TrousseDeToilette.java` :
+
+
+```java
+package fr.viacesi.pau.ap2017.voyage;
+
+public class TrousseDeToilette extends Trousse {
+	int autreEntier ;
+	String autreChaine ;
+	public TrousseDeToilette() {
+		autreChaine = publique;
+		autreEntier = protege ;
+		autreEntier = defaut;
+		autreEntier = prive ;
+		autreEntier = getPrive();
+	}
+}
+```
+
+Nous allons créer la classe suivante dans le paquet `fr.viacesi.pau.ap2017.transport`.
+
+```java
+
+package fr.viacesi.pau.ap2017.transport; //Un autre paquet
+
+class Voiture {
+	Trousse trousse = new Trousse();
+	int entier;
+	String chaine;
+
+	Voiture(){
+		chaine = trousse.publique;
+		entier = trousse.protege;
+		entier = trousse.getProtege();
+		entier = trousse.defaut;
+		entier = trousse.prive ;
+		entier = trousse.getPrive();
+	}
+}
+
+```
+
+Corrigez toutes les erreurs en ajoutant des accesseurs ou en commentant les lignes contenant une erreur impossible à corriger.
+
 
 
 ## Exercices
