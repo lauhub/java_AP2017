@@ -303,6 +303,7 @@ Vous allez définir des classes permettant de calculer les caractéristiques gé
 Pour cela, nous allons définir une classe abstraite:
 
 ```java
+
 public abstract class Forme {
     private String type ;
     private String nom;
@@ -330,7 +331,9 @@ public abstract class Forme {
 
 ```
 
-Et définir des classes qui en héritent et qui implémenteront ces fonctions de base pour :
+Une classe abstraite ne peut être instanciée: il est nécessaire d'en hériter pour pouvoir créer un objet de cette classe.
+
+Vous allez donc définir des classes qui en héritent et qui implémenteront ces fonctions de base pour :
 
 * le triangle
 * le rectangle
