@@ -313,9 +313,9 @@ public abstract class Forme {
     }
 
     /** Renvoie la surface de la forme courante */    
-    public double getSurface();
+    public double abstract getSurface();
     /** Renvoie le périmètre de la forme courante */
-    public double getPerimetre();
+    public double abstract getPerimetre();
     /** Fonction qui pose des questions à l'utilisateur pour
     saisir les valeurs nécessaires aux calculs*/
     public void saisirValeurs();
