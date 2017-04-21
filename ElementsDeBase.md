@@ -266,9 +266,9 @@ Pour indiquer les degrés d'accessibilités on utilise des modificateurs d'acces
 
 On utilise pour cela ces trois mots clés:
 
-* private
-* protected
-* private
+* `private`
+* `protected`
+* `private`
 
 
 | Modificateur |Applicable à  | Signification|
