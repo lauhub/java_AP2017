@@ -428,6 +428,8 @@ La classe `Date` comportera au minimum les méthodes suivantes:
 
 La classe qui utilisera `Date` et qui permettra la saisie sera nommée `ValiditeDate`.
 
+**Attention**: à part la méthode `main`, aucune méthode ne doit être `static` !
+
 Elle comportera les fonctions de saisie en proposant à l'utilisateur:
 
 * de saisir une nouvelle date (qui deviendra la date courante)

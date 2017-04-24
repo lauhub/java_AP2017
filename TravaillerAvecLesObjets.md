@@ -1,8 +1,5 @@
 # Travailler avec les objets
 
-
-
-
 ## Interfaces
 
 Les interfaces permettent de réaliser un "héritage multiple". C'est-à-dire, pour une classe d'avoir plusieurs classes parentes.
@@ -85,16 +82,27 @@ Ce qui est important ici est qu'une classe donnée puisse être vue comme pouvan
 
 #### Ecriture du code
 
-Ecrivez le code des interfaces permettant de réaliser les fonctions *Tuner* et *Lecteur CD*
+Créez une classe `Autoradio` qui implémente ces deux interfaces.
 
-Chaque méthode, au moment de son appel fera un affichage dans la console.
+Un menu affichera le statut de l'instance d'`Autoradio`. Par exemple:
 
 ```
-Bouton morceau suivant appuyé
-Bouton volume modifié: niveau 4
+Lecture de la piste 3 du CD
 ```
 
-Un menu permettra de choisir la fonction à activer:
+ou
+
+```
+Ecoute de la radio FM : 102.3MHz
+```
+Le menu permettra de changer de mode:
+
+```
+R. passage au mode Radio
+C. passage au mode CD
+```
+
+Il affichera les fonctions disponibles à activer:
 
 ```
 1. Augmenter volume
@@ -108,11 +116,40 @@ Un menu permettra de choisir la fonction à activer:
 
 ```
 
-Réaliser le diagramme d'activité correspondant.
+Le choix d'un des nombres fera appel à une des méthodes de l'interface correspondante.
+
+Réalisez le diagramme d'activité correspondant.
+
+Ecrivez le code des interfaces permettant de réaliser les fonctions *Tuner* et *Lecteur CD*
+
+Chaque méthode, au moment de son appel fera un affichage dans la console.
+
+```
+Bouton morceau suivant appuyé
+Bouton volume modifié: niveau 4
+```
+
 
 #### Lecteur MP3
 
-Modélisez et codez l'interface de lecture des MP3.
+Modélisez et codez l'interface de lecture des MP3 : `LecteurMP3`
+
+Ajoutez cette interface à une sous-classe de la classe `Autoradio` : la classe `AutoradioMP3`.
+
+Implémentez les méthodes correspondantes.
+
+Vous modifierez la méthode permettant d'afficher le menu de la classe `Autoradio` (et pas celle de la classe `AutoradioMP3` pour afficher les éléments correspondants à l'interface `LecteurMP3`
+
+Et ce uniquement si elle est implémentée par l'instance de l'objet en cours.
+
+Pour tester cela, vous utiliserez le mot-clé `instanceof` :
+
+```java
+if (this instanceof LecteurMP3){
+  afficherMenuMP3();
+}
+
+```
 
 #### Format des fichiers Audio
 
@@ -124,5 +161,16 @@ Les formats de fichiers audio possible sur une clef USB sont:
 
 Faites une modélisation UML puis codez la prise en compte de ces formats.
 
+### Le modèle de conception Observateur
 
+Un des modèles de conception permettant à un objet de notifier les changements qu'il subit sans "connaître" les objets intéressés par ces changements est le modèle *Observateur* (*Observer*).
+
+![Design Pattern Observateur](images/Observateur.png)
+
+#### Application
+
+Reprenez le code des classes `Date` et `ValiditeDate`.  Adaptez y un observateur (`ObservateurDate`) et faites en sorte que tout changement d'une instance de `Date` affiche un message sur la console.
+
+
+## Exceptions
 Prochain chapitre: [Exceptions.md](Exceptions.md)

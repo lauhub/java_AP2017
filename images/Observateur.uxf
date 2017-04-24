@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLInterface</id>
+    <coordinates>
+      <x>70</x>
+      <y>110</y>
+      <w>240</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>Observateur
+--
+notifier(sujet: &lt;TypeSujet&gt;): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>420</x>
+      <y>120</y>
+      <w>350</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>Sujet
+--
+- listeObservateur
+--
++ enregistrerObservateur(Observateur):void
++ oublierObservateur(Observateur):void
++ notifierObservateurs(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>420</x>
+      <y>290</y>
+      <w>310</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>style=wordwrap
+public void notifierObservateurs(){
+	//Boucle dans laquelle on appelle la méthode `notifier` de chaque observateur enregistré
+}</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>300</x>
+      <y>150</y>
+      <w>140</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;120.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>80</x>
+      <y>320</y>
+      <w>260</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>ObservateurConcret
+--
+--
+notifier(sujet: &lt;TypeSujet&gt;): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>210</x>
+      <y>180</y>
+      <w>30</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;140.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>550</x>
+      <y>230</y>
+      <w>30</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+</diagram>

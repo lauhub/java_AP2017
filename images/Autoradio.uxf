@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>220</x>
+      <y>260</y>
+      <w>200</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>AutoRadio
+--
+allumer():void
+eteindre():void
+reglerVolume(int valeur): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>310</x>
+      <y>160</y>
+      <w>320</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>300.0;10.0;300.0;80.0;10.0;80.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLInterface</id>
+    <coordinates>
+      <x>130</x>
+      <y>30</y>
+      <w>160</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>LectureCD
+--
+lire(): void
+pause() : void
+prochainePiste():void
+pistePrecedente():void
+ejecter():void
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLInterface</id>
+    <coordinates>
+      <x>360</x>
+      <y>30</y>
+      <w>420</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>TunerRadio
+--
+chercherFrequenceHaut(): void
+chercherFrequenceBas() : void
+diminuerFrequence(float nbHertz):void
+augmenterFrequence(float nbHertz):void
+memoriserFrequenceActuelle(int emplacementMemoire):void
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>210</x>
+      <y>160</y>
+      <w>130</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0;110.0;80.0;110.0;100.0</additional_attributes>
+  </element>
+</diagram>
