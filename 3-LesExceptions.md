@@ -419,7 +419,7 @@ Dommage
 
 #### Explications
 
-##### throws NotesnonvalidesException
+##### throws NotesNonvalidesException
 
 La méthode `moyenne` indique ainsi qu’il est possible qu’une de ses instructions envoie une exception de type `NotesNonValidesException` sans que celle-ci soit attrapée par un mécanisme `try`-`catch`. Il est obligatoire d'indiquer ainsi un éventuel lancement d’exception non attrapée, sauf pour les exceptions les plus courantes de l‘API (`RuntimeException`). Si vous oubliez de signaler par la *clause `throws`* l'éventualité d’un tel lancement d'exception, le compilateur vous le rappelera.
 
@@ -428,5 +428,29 @@ On demande ainsi le lancement d’une instance de `NotesNonvalidesException`. Un
 l’appel de la la méthode `moyenne` dans le main, appel qui se trouve dans un *bloc `try`*  suivi d’un *bloc `catch`* qui attrape les `NotesNonValidesException` : l’instruction de ce *bloc `catch`* est effectuée. Le programme reprend alors son cours normal (pour se terminer).
 
 
-### Application
-Nous allons reprendre le programme `GestionForme` et y ajouter la gestion des Exceptions telle que définie ci-dessus.
+### Exercices
+#### Saisie de nombres entiers naturels
+Ecrire une classe `GestionEntiersNaturels` permettant la saisie et le stockage de nombres entiers naturels dans un tableau d'entier.
+
+La classe contenant le programme principal (méthode `main`) sera nommée `EntiersNaturels`
+
+Un entier naturel est un entier positif ou nul.
+
+Le tableau d'entiers aura une taille fixée (par ex: 5).
+1. L'utilisateur pourra choisir :
+   1. de saisir un nouveau nombre
+   1. de supprimer le dernier nombre du tableau
+   1. de vider le tableau
+1. Lorsque l'utilisateur saisit un nombre, le programme le fait enregistrer par la classe `GestionEntiersNaturels`. Si c'est un entier naturel, l'entier est enregistré dans le tableau. Si ce n'est pas le cas, une exception est levée (`IllegalArgumentException`)
+2. Si le tableau est déjà complet, une exception est levée. Elle indique que le tableau est plein et qu'il faut le vider ou supprimer un élément.
+
+
+
+
+
+#### Gestion des formes
+Reprendre le programme `GestionForme` et y ajouter la gestion des Exceptions telle que définie ci-dessus:
+1. lever une exception dans la classe `ListeForme` lorsque l'index utilisé (ajout, suppression) est incorrect (en réutilisant la classe `ArrayIndexOutOfBoundsException`)
+2. lever une exception dans la classe `Forme` et ses sous-classes lorsqu'une valeur est incorrecte (longueur négative par exemple). Vous utiliserez la classe `IllegalArgumentException`
+3. traiter l'exception précédente dans les classes appelantes (avec affichage d'un message d'erreur explicite)
+4. lever une exception dans la classe `GestionForme` lorsqu'un choix est incorrect (type de forme, choix du menu inexistant). Pour cela, vous créerez une classe `ChoixIncorrectException`

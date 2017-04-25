@@ -252,3 +252,6 @@ public static void main(String[] args) {
   dansUnTableau();
 }
 ```
+#### Exercice
+##### Dates
+Reprendre l'exercice sur les dates et créer les Enum pour les mois.
