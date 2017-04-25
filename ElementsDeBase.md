@@ -453,10 +453,9 @@ Vous allez définir des classes permettant de calculer les caractéristiques gé
 Pour cela, nous allons définir une classe abstraite:
 
 ```java
-
 public abstract class Forme {
     private String type ;
-    private String nom;
+    private String nom ;
     public Forme(String type, String nom){
       this.type = type;
       this.nom = nom;
@@ -472,15 +471,22 @@ public abstract class Forme {
     saisir les valeurs nécessaires aux calculs*/
     public abstract void saisirValeurs();
 
-    public String getType(){...}
-    public String getNom(){...}
+    public String getType(){
+      //...
+      return null;
+    }
+    public String getNom(){ //...
+      return null;
+    }
     /**
     Renvoie la concaténation du type et du nom.
     Ex: triangle/bermudes
     */
-    public String getRepresentation(){...}
+    public String getRepresentation(){
+      //...
+      return null;
+    }
 }
-
 ```
 
 Une classe abstraite ne peut être instanciée: il est nécessaire d'en hériter pour pouvoir créer un objet de cette classe.
@@ -490,7 +496,7 @@ Vous allez donc définir des classes qui en héritent et qui implémenteront ces
 * le triangle
 * le rectangle
 * le carré
-* le trapèze
+* le cercle
 
 Pour commencer, faites un diagramme UML de toutes ces classes.
 
