@@ -9,6 +9,20 @@ public class Triangle extends Forme {
 		super("Triangle", nom);
 	}
 
+	public Triangle(String nom, 
+			double coteAB, 
+			double coteBC, 
+			double coteCA) {
+		super("Triangle", nom);
+		this.coteAB = coteAB;
+		this.coteBC = coteBC;
+		this.coteCA = coteCA;
+	}
+
+	public boolean estEquilateral(){
+		return coteAB == coteBC && coteBC == coteCA;
+	}
+	
 	@Override
 	public double getPerimetre() {
 		return coteAB + coteBC + coteCA;
@@ -24,7 +38,8 @@ public class Triangle extends Forme {
 		coteBC = in.nextDouble();
 		System.out.println("Longueur coté CA:");
 		coteCA = in.nextDouble();
-		in.close();
 	}
-
+	public String getRepresentation(){
+		return ">>>" + super.getRepresentation() ;
+	}
 }

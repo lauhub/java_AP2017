@@ -8,7 +8,6 @@ public abstract class Forme {
 		this.nom = nom;
 	}
 
-
 	/** Renvoie le périmètre de la forme courante */
 	public abstract double getPerimetre();
 
@@ -27,7 +26,9 @@ public abstract class Forme {
     Ex: triangle/bermudes
 	 */
 	public String getRepresentation(){
-		//...
-		return null;
-	}
+	      return type + "/" + nom ;
+    }
+    public String toString(){
+    		return getRepresentation();
+    }
 }
