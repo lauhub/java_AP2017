@@ -45,11 +45,10 @@ Lorsqu’une exception est levée, le déroulement du code est interrompu et le 
 dispositions prendre. Au niveau de la programmation, il est possible de prévoir deux modes de codage :
 
 1. Soit la méthode dont le code a été interrompu dispose des informations suffisantes pour corriger certaines anomalies observées (ou bien
-pour émettre des messages d’erreur explicites). Dans ce cas, la méthode décide de traiter elle-même certaines exceptions dans des blocs
-catch associés à un bloc try.
+pour émettre des messages d’erreur explicites). Dans ce cas, la méthode décide de traiter elle-même certaines exceptions dans des *blocs `catch`* associés à un *bloc `try`*.
 
 2. Soit la méthode concernée ne dispose pas elle-même des informations suffisantes pour traiter certains types d’exceptions, mais les
-méthodes appelantes peuvent disposer de ces informations. Dans ce cas les exceptions sont déclarées dans la clause throws de la
+méthodes appelantes peuvent disposer de ces informations. Dans ce cas les exceptions sont déclarées dans la *clause `throws`* de la
 signature de la méthode afin que les méthodes appelantes soient informées des types d’exccptions susceptibles d’être levées par une
 méthode.
 
@@ -73,8 +72,8 @@ public void lireImageRGB(String filename ) {
 }
 ```
 
-La première étape consiste à inclure le code susceptible de lever des exceptions dans un bloc `try { ... }`
-A un bloc `try` doivent être associées une ou plusieurs clauses `catch` et éventuellement un bloc `finally`.
+La première étape consiste à inclure le code susceptible de lever des exceptions dans un *bloc `try { ... }`*
+A un *bloc `try`* doivent être associées une ou plusieurs *clauses `catch`* et éventuellement un *bloc `finally`*.
 
 ```java
 public void lireImageRGB(String filename ) {
@@ -143,21 +142,21 @@ public class GestionExceptionProgramme {
 
 ```
 
-Le bloc `try` commence avant la ligne `File f = new File(name);` car le constructeur de la classe `File` peut lui aussi lever une exception de type
+Le *bloc `try`* commence avant la ligne `File f = new File(name);` car le constructeur de la classe `File` peut lui aussi lever une exception de type
 `NullPointerException`, dans le cas où le nom de fichier passé en paramètre est égal à `null`.
 
-Si une exception se produit dans un bloc `try`, l'exécution de code est interrompue et les clauses catch qui lui sont associées sont examinées
-dans l’ordre pour chercher si l’unc d’elles a prévu un traitement de l'exception produite. Les clauses `catch` sont comme des méthodes recevant un seul argument.
+Si une exception se produit dans un *bloc `try`*, l'exécution de code est interrompue et les *clauses `catch`* qui lui sont associées sont examinées
+dans l’ordre pour chercher si l’unc d’elles a prévu un traitement de l'exception produite. Les *clauses `catch`* sont comme des méthodes recevant un seul argument.
 
-Si une clause `catch` correspond à l’exception, elle prend le contrôle de l'exécution.
+Si une *clause `catch`* correspond à l’exception, elle prend le contrôle de l'exécution.
 
-Le code d’un bloc associé à une clause `finally` est exécuté dans tous les cas, soit après une exécution normale du bloc `try` soit après traitement d'une exception
+Le code d’un bloc associé à une *clause `finally`* est exécuté dans tous les cas, soit après une exécution normale du *bloc `try`* soit après traitement d'une exception
 
 
 
 ### Traitement dans la méthode appelante
 
-Pour indiquer que l'Exception n’est pas gérée dans la méthode `lireImageRGB()` et que par conséquent, elle le sera dans la méthode appelante, on utilise la clause `throws`.
+Pour indiquer que l'Exception n’est pas gérée dans la méthode `lireImageRGB()` et que par conséquent, elle le sera dans la méthode appelante, on utilise la *clause `throws`*.
 
 Reprenons l'exemple précédent :
 
@@ -323,7 +322,7 @@ correspond pas à un entier. Les instructions suivantes ne sont alors pas effect
   nbNotes++;
 ```
 
-ne sont pas effectuées, et on passe à l'instruction `println` intérieure au "bloc catch", puis on remonte dans la "boucle for" qui reprend son déroulement.
+ne sont pas effectuées, et on passe à l'instruction `println` intérieure au "*bloc `catch`*", puis on remonte dans la "boucle for" qui reprend son déroulement.
 
 * java. lang.ArithmeticException : si `nbNotes` vaut 0, une exception, instance de `java.lang.ArithmeticException` est lancée.
 Celle—ci n’étant pas attrapée, elle se propage alors jusqu’à la fin du programme, comme on peut le constater sur le deuxième exemple d’exécution.
@@ -359,9 +358,11 @@ public class NotesNonValidesException extends Exception {
 ```
 
 ### Levée d’exception
-L'exception est levée dans le code à l’aide de la clause `throw`.
+L'exception est levée dans le code à l’aide de la *clause `throw`*.
 
-Reprenons l'exemple précédent (`ExceptionCatch`). Imaginons que nous voulions éviter, l'exception `java.lang.ArithmeticException`. Une solution consiste à tester si nbNotes == 0, avant d'effectuer le calcul de la moyenne et à signaler le problème en levant l'exception créée précédemment (`NotesNonValidesException`).
+Reprenons l'exemple précédent (`ExceptionCatch`). Imaginons que nous voulions éviter, l'exception `java.lang.ArithmeticException`. Une solution consiste à tester si `nbNotes == 0`, avant d'effectuer le calcul de la moyenne et à signaler le problème en levant l'exception créée précédemment (`NotesNonValidesException`).
+
+#### Programme
 
 ```java
 
@@ -402,20 +403,30 @@ public class ExceptionThrow {
 
 ```
 
-Pourljava ExceptionThrows ha 15.5,on obüent
+Pour :
+```
+java ExceptionThrow ha 15.5
+```
 
+On obtient :
+
+```
 La 1ere note n'est: pas entière
 La 2eme note n'est pas entiere
 Aucune note n'est valide
 Dommage
+```
 
-throws Notesnonvalideszxception : la méthode moyenne indique ainsi qu’il est possible qu’unc de ses instructions envoie une exception
-de type NotesNonValidesException sans que celle-ci soit attrapée par un mécanisme `try`-`catch`. Il est obligatoire dïiidiquer ainsi un
-éventuel lancement d’exception non attrapée, sauf pour les exceptions les plus courantes de l‘API. Si vous oubliez de signaler par la clause
-throws l'éventualité d’un tel lancement Œexception, le compilateur vous le rappelera.
+#### Explications
 
-throw new NotesNonvalidesException() : on demande ainsi le lancement d’une instance de NotesNonvalidesException. Une fois
-lancée, Fexception se propagera comme expliqué dans l’exemple précédent. Ici, il y aura sortie de la méthode moyenne, on se retrouve alors à
-l’appel de la la méthode moyenne dans le main, appel qui se trouve dans un "bloc ery" suivi d’un "bloc catch" qui attrape les
-notesNonvalidesExceptionŒ) : l’instruction de ce ‘Ïbloc catch" est effectuée. Le programme reprend alors son cours normal (pour se
-terminer).
+##### throws NotesnonvalidesException
+
+La méthode `moyenne` indique ainsi qu’il est possible qu’une de ses instructions envoie une exception de type `NotesNonValidesException` sans que celle-ci soit attrapée par un mécanisme `try`-`catch`. Il est obligatoire d'indiquer ainsi un éventuel lancement d’exception non attrapée, sauf pour les exceptions les plus courantes de l‘API (`RuntimeException`). Si vous oubliez de signaler par la *clause `throws`* l'éventualité d’un tel lancement d'exception, le compilateur vous le rappelera.
+
+##### throw new NotesNonvalidesException()
+On demande ainsi le lancement d’une instance de `NotesNonvalidesException`. Une fois lancée, l'exception se propagera comme expliqué dans l’exemple précédent. Ici, il y aura sortie de la méthode `moyenne`, on se retrouve alors à
+l’appel de la la méthode `moyenne` dans le main, appel qui se trouve dans un *bloc `try`*  suivi d’un *bloc `catch`* qui attrape les `NotesNonValidesException` : l’instruction de ce *bloc `catch`* est effectuée. Le programme reprend alors son cours normal (pour se terminer).
+
+
+### Application
+Nous allons reprendre le programme `GestionForme` et y ajouter la gestion des Exceptions telle que définie ci-dessus.
