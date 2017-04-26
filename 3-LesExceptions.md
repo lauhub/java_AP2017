@@ -12,10 +12,40 @@ Le compilateur Java impose la gestion des exceptions lorsque vous tentez d’uti
 méthode `readShort` de la classe `DataInputStream` qui lit depuis un fichier peut éventuellement lever des exceptions `IOException`; elle est
 donc définie avec un modificateur spécial `throws` qui signale ces erreurs potentielles.
 
-Exemple :
+Un exemple d'exception dont le traitement n'est pas imposé :
+```java
+public class ExceptionDemo {
+	public void testTableau(){
+		int[] tableauEntier = new int[5];
+		tableauEntier[6] = 12; //On est en dehors des limites du tableau
+	}
+
+	public static void main(String[] args) {
+		new ExceptionDemo().testTableau(); //ArrayIndexOutOfBoundsException
+	}
+}
+```
+
+Un exemple d'exception dont le traitement est imposé par le compilateur:
+```java
+public class ExceptionDemo {
+	public void testFichier(){
+		File file = new File("NExistePas.txt");
+		FileInputStream fis = new FileInputStream(file); //ERREUR de COMPILATION
+                                                     //Unhandled exception type FileNotFoundException	ExceptionDemo.java
+	}
+
+	public static void main(String[] args) {
+		new ExceptionDemo().testFichier();
+	}
+}
+```
+
+
+Un autre exemple :
 
 ```java
-File f = new File(name);
+File f = new File(filename);
 
 Filelnputstream fis = new FileInputStream(f);
 
@@ -61,11 +91,9 @@ Reprenons l'exemple précédent :
 
 ```java
 public void lireImageRGB(String filename ) {
-
-  File f = new File(name);
+  File f = new File(filename);
 
   Filelnputstream fis = new FileInputStream(f);
-
   BufferedInputstream bis = new BufferedInputStream(fis,(int)f.length());
   DataInputstream dis = new DataInputStream(bis);
 
@@ -107,44 +135,47 @@ import java.io.IOException;
 
 public class GestionExceptionProgramme {
 	public void lireImageRGB(String filename ) {
+		DataInputStream dis = null;
 		try {
-
-			File f = new File(name);
+			File f = new File(filename);
 			FileInputStream fis = new FileInputStream(f);
 			BufferedInputStream bis = new BufferedInputStream(fis,(int)f.length());
-			DataInputStream dis = new DataInputStream(bis);
+			dis = new DataInputStream(bis);
 
 			short magicNumber = dis.readShort () ;
-
 		}
-
 		catch ( NullPointerException n ) { // sous—classe de RuntimeException
 			System.out.println("exception: " + n.getMessage());
 			n.printStackTrace();
-
 		}
 		catch ( FileNotFoundException f ) { // sous—classe de IOException
-
-			System.out.println(“exception: “ + f.getMessage());
+			System.err.println("exception: " + f.getMessage());
 			f.printStackTrace();
-
 		}
 		catch ( IOException e ) { // sous—classe de Exception
-
 			System.out.println("exception: " + e.getMessage());
 			e.printStackTrace();
-
 		}
 		finally { //Exécuté quoiqu'il arrive
-
-			f.close(); //Ferme proprement le fichier
+			try {
+				dis.close(); //Ferme proprement le fichier
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			catch ( NullPointerException n ) { // sous—classe de RuntimeException
+				System.out.println("Le flux n'a pas été initialisé : " +
+							n.getMessage());
+				//n.printStackTrace();
+			}
 		}
 	}
+	public static void main(String[] args) {
+		new GestionExceptionProgramme().lireImageRGB("UnFichierInexistant.jpg");
+	}
 }
-
 ```
 
-Le *bloc `try`* commence avant la ligne `File f = new File(name);` car le constructeur de la classe `File` peut lui aussi lever une exception de type
+Le *bloc `try`* commence avant la ligne `File f = new File(filename);` car le constructeur de la classe `File` peut lui aussi lever une exception de type
 `NullPointerException`, dans le cas où le nom de fichier passé en paramètre est égal à `null`.
 
 Si une exception se produit dans un *bloc `try`*, l'exécution de code est interrompue et les *clauses `catch`* qui lui sont associées sont examinées
@@ -217,7 +248,7 @@ Le package java.io définit une classe générale d’exceptions appelée IOExce
 java.io pour les exceptions (d'entrée et de sortie (EOFException, FileNotFoundException), mais aussi dans les classes du package
 java.net pour les exceptions de réseau telles que MalFormedURLException.
 
-![La classe Exception](images/ClassesException.svg)
+![La classe Exception](images/ClassesException.png)
 
 
 Ci dessous, est représentée une partie de la hiérarchie des exceptions.
@@ -335,7 +366,7 @@ Mais seule l'exception java.lang.NumberFormatException doit être obligatoiremen
 
 ### Création d’exception
 
-ll est possible pour le programmeur de créer ses propres classes d'exception en héritant soit de la classe Exception (sommet de la hiérarchie des classes explicites), soit en cherchant une exception plus proche de celle que l’on veut créer. Par exemple : une exception pour un mauvais format de fichier doit normalement être une IOException.
+ll est possible pour le programmeur de créer ses propres classes d'exception en héritant soit de la classe Exception (sommet de la hiérarchie des classes explicites), soit en cherchant une exception plus proche de celle que l’on veut créer. Par exemple : une exception pour un mauvais format de fichier doit normalement être une `IOException`.
 
 Les classes d'exceptions ont typiquement deux constructeurs : le premier ne prend pas d'argument, et le second prend une seule chaîne comme argument. Dans le second, vous devez appeler `super()` dans le constructeur pour vous assurer que la chaine est utilisée au bon endroit dans l'exception.
 
