@@ -15,12 +15,12 @@ donc définie avec un modificateur spécial `throws` qui signale ces erreurs pot
 Exemple :
 
 ```java
-File f = new Fi1e(name); v
+File f = new File(name);
 
 Filelnputstream fis = new FileInputStream(f);
 
-BufferedInputstream bis = new BufferedInputStream(fis,(int)f.length());
-Datalnputstream dis = new DataInputStream(bis);
+BufferedInputStream bis = new BufferedInputStream(fis,(int)f.length());
+DataInputStream dis = new DataInputStream(bis);
 
 short magicNumber = dis.readShort();
 
@@ -34,8 +34,10 @@ public final short readShort() throws IOException
 
 En Java on est obligé de traiter les exceptions dans le code, sinon il ne peut être compilé et le message suivant est affiché :
 
+```
 Exception java.lang.InterruptedException
 must be caught or it must be declared in the throws clause of this method.
+```
 
 La méthode `readShort` levant une exception, le code de l'exemple précédent ne passe pas à la compilation.
 
