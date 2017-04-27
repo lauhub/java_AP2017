@@ -98,21 +98,20 @@ Ecoute de la radio FM : 102.3MHz
 Le menu permettra de changer de mode:
 
 ```
-R. passage au mode Radio
+R. passage au mode Tuner Radio
 C. passage au mode CD
 ```
 
 Il affichera les fonctions disponibles à activer:
 
 ```
-1. Augmenter volume
-2. Diminuer volume
-3. Passer au mode Tuner
-4. Passer au mode CD
+A. Augmenter volume
+D. Diminuer volume
 
-
-1. Morceau CD suivant
-2. Morceau CD précédent
+1. lire CD
+2. pause CD
+3. Morceau CD suivant
+4. Morceau CD précédent
 
 ```
 
