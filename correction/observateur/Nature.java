@@ -1,12 +1,6 @@
 package fr.viacesi.pau.ap2017.nature;
 
 public class Nature implements ObservateurChamps {
-	private Champs champs ;
-	Nature(){
-		champs = new Champs();
-		champs.enregistrerObservateur(this);
-	}
-	
 	@Override
 	public void champsModifie(Champs champs) {
 		System.out.println("### Le champs a été modifié");
@@ -15,14 +9,16 @@ public class Nature implements ObservateurChamps {
 	
 	public static void main(String[] args) {
 		Nature nature = new Nature();
-		nature.champs.addObjet(new Fleur("Paquerette", 1));
-		nature.champs.addObjet(new Fleur("Jonquille", 2));
+		Champs champs = new Champs();
+		champs.enregistrerObservateur(nature);
+		champs.addObjet(new Fleur("Paquerette", 1));
+		champs.addObjet(new Fleur("Jonquille", 2));
 		
 		ObservateurChamps autreObs = new AutreObservateur();
-		nature.champs.enregistrerObservateur(autreObs);
+		champs.enregistrerObservateur(autreObs);
 		
-		nature.champs.addObjet(new Fleur("Paquerette", 3));
-		nature.champs.addObjet(new Fleur("Jonquille", 4));
+		champs.addObjet(new Fleur("Paquerette", 3));
+		champs.addObjet(new Fleur("Jonquille", 4));
 		
 	}
 }
