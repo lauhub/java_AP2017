@@ -98,7 +98,7 @@ public class AvecLesGenerics{
 On se rend bien compte qu'avec ceci, on dispose d'un outil puissant et versatile pour stocker des listes d'objets. La classe `ListeForme` que nous avions développée pour gérer une liste de `Forme` est, en comparaison, bien plus limitée (en fonctionnalités et surtout en réutilisabilité).
 
 
-![Pour aller plus loin avec les Generics](http://lroux.developpez.com/article/java/tiger/?page=page_5#Lgenerics)
+[Pour aller plus loin avec les Generics](http://lroux.developpez.com/article/java/tiger/?page=page_5#Lgenerics)
 
 
 ## Autoboxing/unboxing
@@ -317,7 +317,7 @@ Le diagramme suivant donne une vision globale des Collections en Java
 
 Nous ne ferons que décrire ici l'interface `Set`. Cette interface permet de contenir un ensemble d'objets. Cet ensemble ne contient pas de doublon (un objet y est stocké une et une seule fois).
 
-![Les Collections en Java](https://en.wikibooks.org/wiki/Java_Programming/Collection)
+[Les Collections en Java](https://en.wikibooks.org/wiki/Java_Programming/Collection)
 
 
 ### Parcours
