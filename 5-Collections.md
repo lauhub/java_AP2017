@@ -210,8 +210,14 @@ Remplissez une liste avec des entiers numérotés de 1 à 10.
 
 Utilisez les deux types de boucle `for` pour parcourir une `List` d'entiers (de 1 à 20).
 
-#### Observateur
+#### Observateur de Champs
 
+Reprenez le code de l'observateur du chapitre précédent (Travailler avec les objets) et remplacez le tableau par une `List` (en utilisant au choix `ArrayList` ou `LinkedList`).
+
+Utilisez une boucle `for-each` pour la notification des observateurs.
+
+
+#### Observateur de Date
 Reprenez le code des classes `Date` et `ValiditeDate`.  Adaptez y un observateur (`ObservateurDate`) en utilisant cette fois le type `List`
 
 
