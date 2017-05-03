@@ -79,7 +79,7 @@ notifier(sujet: &lt;TypeSujet&gt;): void
       <w>30</w>
       <h>160</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;140.0</additional_attributes>
   </element>
   <element>
