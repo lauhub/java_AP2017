@@ -121,7 +121,7 @@
     </coordinates>
     <panel_attributes>VehiculeDeuxRoues
 --
-rouleSurQuatreRoues():void</panel_attributes>
+rouleSurDeuxRoues():void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
