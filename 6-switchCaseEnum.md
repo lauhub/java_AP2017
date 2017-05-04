@@ -20,18 +20,19 @@ On peut critiquer le code suivant du point de vue de :
             if(valeurChoix == 1){
                 System.out.println("Menu Préférences");
             }
-            if (valeurChoix == 2){
+            else if (valeurChoix == 2){
                 System.out.println("Menu Edition");
             }
-            if (valeurChoix == 3){
+            else if (valeurChoix == 3){
                 System.out.println("Bonjour");
             }
-            if (valeurChoix == 4){
+            else if (valeurChoix == 4){
                 System.out.println("Au revoir");
             }
-            if (valeurChoix == 5){
+            else if (valeurChoix == 5){
                 System.exit(0);
-            }else {
+            }
+            else {
                 System.out.print("Saisir votre choix (1,2,3,4 ou 5) : ");
             }
         }
@@ -102,14 +103,14 @@ avec les constantes définies comme tel:
 
 ```java
   public static final String CHOIX_MENU_PREFERENCES = "1";
-  public static final String CHOIX_MENU_PREFERENCES = "2";
+  public static final String CHOIX_MENU_EDITION     = "2";
 ```
 
 Ceci rend le code plus lisible. Cependant, il exite un risque pour que deux constantes soient de même valeur:
 
 ```java
   public static final String CHOIX_MENU_PREFERENCES = "1";
-  public static final String CHOIX_MENU_PREFERENCES = "1";
+  public static final String CHOIX_MENU_EDITION     = "1";
 ```
 
 Dans ce cas, le risque de mauvais fonctionement du programme est important, sans qu'il soit nécessairement détecté.
@@ -186,7 +187,6 @@ public enum PointCardinal {
 	private String representation ;
 
 	PointCardinal(String representation){
-		this.index = index;
 		this.representation = representation;
 	}
 
