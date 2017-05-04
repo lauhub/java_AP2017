@@ -158,7 +158,7 @@ mysql> select * from personne ;
 
 #### Connecteur
 
-Observez et analysez cet exemple
+Observez et analysez cet exemple :
 
 ```java
 package fr.viacesi.ap2017.database;
@@ -169,11 +169,27 @@ public class ConnectionMySQL {
 	private Connection connection = null;
 	private String user, password, host;
 
-	public ConnectionMySQL() throws ClassNotFoundException, IllegalAccessException, InstantiationException{
-		//Chargement du pilote
-		Class.forName("com.mysql.jdbc.Driver").newInstance();
+	private static boolean driverLoaded = false;
+
+	public static boolean isDriverLoaded(){
+		return driverLoaded;
 	}
-	public ConnectionMySQL(String host, String user, String password) throws ClassNotFoundException, IllegalAccessException, InstantiationException{
+
+	public static void init() throws ClassNotFoundException, IllegalAccessException, InstantiationException{
+		if(!driverLoaded){
+			//Chargement du pilote
+			Class.forName("com.mysql.jdbc.Driver").newInstance();
+			driverLoaded = true;
+		}
+	}
+
+	public ConnectionMySQL() {
+		if(!driverLoaded){
+			throw new IllegalStateException("Cannot instantiate if driver is not loaded. Please call "+getClass().getName()+".init() method before invoking this constructor.");
+		}
+	}
+
+	public ConnectionMySQL(String host, String user, String password) {
 		this();
 		this.host = host;
 		this.user = user;
@@ -204,8 +220,21 @@ public class ConnectionMySQL {
 	public void close() throws SQLException{
 		connection.close();
 	}
+}
+```
 
-	public static void afficherDonnees(ResultSet resultats) throws SQLException{
+Méthode `main` :
+
+```java
+package fr.viacesi.ap2017.database;
+
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+
+public class AfficherTablePersonne {
+
+	public void afficherDonnees(ResultSet resultats) throws SQLException{
 		System.out.println("Parcours des donnees retournees");
 		ResultSetMetaData rsmd = resultats.getMetaData();
 		int nbCols = rsmd.getColumnCount();
@@ -235,35 +264,34 @@ public class ConnectionMySQL {
 
 	public static void main(java.lang.String[] args) {
 		try {
-			ConnectionMySQL connecteur = new ConnectionMySQL("lamp.exemple.cesi", "demouser", "MotDePasse");
-			try {
-				connecteur.connect();
-
-				ResultSet resultSet = connecteur.execute("SELECT * FROM personne");
-				afficherDonnees(resultSet);
-
-				//Bonne pratique: fermer votre résultat
-				resultSet.close();
-
-				//Bonne pratique: fermer le connecteur
-				connecteur.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-
-		} catch (ClassNotFoundException e) {
+			ConnectionMySQL.init();			
+		} catch (ClassNotFoundException | IllegalAccessException | InstantiationException e) {
 			System.err.println("La librairie n'est pas disponible");
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (InstantiationException e) {
+			System.exit(5);
+		}
+
+
+		AfficherTablePersonne atp = new AfficherTablePersonne();
+		ConnectionMySQL connecteur = new ConnectionMySQL("lamp.exemple.cesi", "demouser", "MotDePasse");
+		try {
+			connecteur.connect();
+
+			ResultSet resultSet = connecteur.execute("SELECT * FROM personne");
+			atp.afficherDonnees(resultSet);
+
+			//Bonne pratique: fermer votre résultat
+			resultSet.close();
+
+			//Bonne pratique: fermer le connecteur
+			connecteur.close();
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		System.exit(0);
 	}
 }
-
-
 ```
+
 
 
 ##Exercice
