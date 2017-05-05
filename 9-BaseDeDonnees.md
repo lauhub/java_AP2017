@@ -294,7 +294,7 @@ public class AfficherTablePersonne {
 
 
 
-##Exercice
+## Exercice
 
 Créez une classe qui permette de stocker les résultats en lisant un `ResultSet` et un algorithme qui instancie une Personne pour chaque entrée de la base.
 
@@ -436,6 +436,6 @@ Le code source des classes qu'elle utilise est disponible [ici](exemples/databas
 Voir aussi cette page : [Retrieving and Modifying Values from Result Sets](http://docs.oracle.com/javase/tutorial/jdbc/basics/retrieving.html)
 
 
-##Pour aller plus loin
+## Pour aller plus loin
 
 Des exemples complets sur l'ensemble des fonctionnalités JDBC [sont disponibles ici](http://docs.oracle.com/javase/tutorial/jdbc/basics/index.html).
